@@ -25,8 +25,8 @@ namespace SelesForce.Core
         {
             return new UserModel
             {
-                Name = "vladimirvolkov@internetkeno.com",
-                Password = "1qaz@WSX",
+                Name = "isthisnikita@gmail.com",
+                Password = "AlanaAlana2",
             };
 
         }
