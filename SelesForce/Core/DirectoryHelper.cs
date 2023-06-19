@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SelesForce.Core
 {
-   {
+
     internal class DirectoryHelper
     {
         public static string GetTestDataFolderPath()
@@ -15,4 +15,4 @@ namespace SelesForce.Core
         }
     }
 }
-}
+
