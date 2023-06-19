@@ -1,0 +1,8 @@
+{
+  "allure": {
+    "directory": "allure-results",
+    "links": [
+      "https://jira-devops-platform.bearingpoint.com/browse/{issue}",
+      "https://example.org/{tms}"
+    ]
+  }
