@@ -9,6 +9,7 @@ namespace SelesForce.Core
     public class BrowserConfiguration : IConfiguration
     {
         public string SectionName => "Browser";
+        public string JsonSectionName => SectionName;
 
         public bool Hedless { get; set; }
         public string Type { get; set; }
