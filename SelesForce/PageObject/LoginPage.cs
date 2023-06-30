@@ -34,14 +34,14 @@ namespace SelesForce.PageObject
 
         public NewAccountModal OpenNewAccountModal()
         {
-            Browser.Instance.NavigateToUrl("https://d06000000zfpfeau-dev-ed.develop.lightning.force.com/lightning/o/Lead/list?filterName=Recent");
+            Browser.Instance.NavigateToUrl("https://d06000000zfpfeau-dev-ed.develop.lightning.force.com/lightning/o/Account/list?filterName=Recent");
             new Button(By.XPath("//div[@title='New']")).GetElement().Click();
             return new NewAccountModal();
         }
 
         public NewContactModal OpenNewContactModal()
         {
-            // Browser.Instance.NavigateToUrl("https://ivaonvoooo3-dev-ed.develop.lightning.force.com/lightning/o/Contact/list?filterName=Recent");
+            Browser.Instance.NavigateToUrl("https://ivaonvoooo3-dev-ed.develop.lightning.force.com/lightning/o/Contact/list?filterName=Recent");
             var contactTab = Browser.Instance.Driver.FindElement(By.XPath("//*[@data-id='Contact']//span"));
 
             ContactTab.ClickElementViaJs();
