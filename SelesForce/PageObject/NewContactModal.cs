@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using Bogus;
+using OpenQA.Selenium;
 using SelesForce.Core.Selenium.Elements;
 using System;
 using System.Collections.Generic;
@@ -12,17 +13,15 @@ namespace SelesForce.PageObject
     {
         Input accountName = new("Last Name");
         PartialTextDropDown typeDropDown = new("Account Name");
+        static Faker Faker = new();
 
         Button saveButton = new(By.XPath("//*[@title='Save']//button"));
 
         public void CreateContact(string name, string listOption)
         {
-
-            accountName.GetElement().SendKeys(name);
+            accountName.GetElement().SendKeys(Faker.Name.LastName());
             typeDropDown.Select("isthisnikita@gmail.com");
-            typeDropDown.Clear();
-            typeDropDown.SelectByPartText("Niki Niki");
-
+           // typeDropDown.SelectByPartText("Niki Niki");
             saveButton.GetElement().Click();
         }
     }
