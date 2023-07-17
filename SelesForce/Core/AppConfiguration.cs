@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 
-
 namespace SelesForce.Core
 {
     public class AppConfiguration
@@ -24,9 +23,11 @@ namespace SelesForce.Core
             ///      .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("BROWSER")}.json", optional: true, reloadOnChange: true)
             ///        .Build();
 
-            configurationRoot = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
-           .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true).AddJsonFile($"appsettings.custom.json", optional: true, reloadOnChange: true)
-        .Build();
+            configurationRoot = new ConfigurationBuilder()
+               .SetBasePath(Directory.GetCurrentDirectory())
+               .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+               .AddJsonFile($"appsettings.custom.json", optional: true, reloadOnChange: true)
+               .Build();
         }
 
         private static T BindConfiguration<T>() where T : IConfiguration, new()
