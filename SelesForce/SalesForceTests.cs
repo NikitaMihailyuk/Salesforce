@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Allure.Commons;
+using NLog;
 using NUnit.Allure.Attributes;
 using SelesForce.Core;
 using SelesForce.PageObject;
@@ -12,7 +13,6 @@ namespace SelesForce
 {
     public class SalesForceTests : BaseTest
     {
-
         [Test(Description ="Failed coz random")]
         [AllureSeverity(SeverityLevel.normal)]
         [AllureTag("Smoke")]

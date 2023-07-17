@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Allure.Attributes;
+using NLog;
+using static System.Net.WebRequestMethods;
 
 namespace SelesForce.PageObject
 {
@@ -18,10 +20,14 @@ namespace SelesForce.PageObject
 
         private Button ContactTab = new(By.XPath("//*[@data-id='Contact']//span"));
 
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+
         [AllureStep]
         public LoginPage OpenPage()
         {
-            Browser.Instance.NavigateToUrl("https://d06000000zfpfeau-dev-ed.develop.my.salesforce.com/");
+            var url = "https://d06000000zfpfeau-dev-ed.develop.my.salesforce.com/";
+            Browser.Instance.NavigateToUrl(url);
+            logger.Info($"Navigate to url {url}");
             return this;
         }
         [AllureStep]
@@ -30,7 +36,7 @@ namespace SelesForce.PageObject
             userNameInput.GetElement().SendKeys(user.Name);
             passwordInput.GetElement().SendKeys(user.Password);
             loginButton.GetElement().Click();
-
+            logger.Info($" try to login user: {user.Name}");
             return this;
         }
 
@@ -57,6 +63,10 @@ namespace SelesForce.PageObject
             Browser.Instance.NavigateToUrl("https://d06000000zfpfeau-dev-ed.develop.lightning.force.com/lightning/o/Contact/list?filterName=Recent");
             var contactTab = Browser.Instance.Driver.FindElement(By.XPath("//*[@data-id='Contact']//span"));
             DropDownMainPage DropDownNumber = new("1");
+            logger.Warn("warn");
+            logger.Debug("debug");
+            logger.Error("-error");
+            logger.Fatal("Fatal");
             DropDownNumber.Select("Edit");
             return new EditContactModal();
         }
@@ -87,7 +97,6 @@ namespace SelesForce.PageObject
             DropDownMainPage DropDownNumber = new("1");
             DropDownNumber.Select("Delete");
             new Button(By.XPath("//*[@title='Delete']")).GetElement().Click();
-
         }
 
 
