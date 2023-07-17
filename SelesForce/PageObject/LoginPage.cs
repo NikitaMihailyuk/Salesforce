@@ -41,7 +41,7 @@ namespace SelesForce.PageObject
 
         public NewContactModal OpenNewContactModal()
         {
-            Browser.Instance.NavigateToUrl("https://ivaonvoooo3-dev-ed.develop.lightning.force.com/lightning/o/Contact/list?filterName=Recent");
+            Browser.Instance.NavigateToUrl("https://d06000000zfpfeau-dev-ed.develop.lightning.force.com/lightning/o/Contact/list?filterName=Recent");
             var contactTab = Browser.Instance.Driver.FindElement(By.XPath("//*[@data-id='Contact']//span"));
 
             ContactTab.ClickElementViaJs();
@@ -49,5 +49,45 @@ namespace SelesForce.PageObject
 
             return new NewContactModal();
         }
+
+        public EditContactModal OpenExistingContactModal()
+        {
+            Browser.Instance.NavigateToUrl("https://d06000000zfpfeau-dev-ed.develop.lightning.force.com/lightning/o/Contact/list?filterName=Recent");
+            var contactTab = Browser.Instance.Driver.FindElement(By.XPath("//*[@data-id='Contact']//span"));
+            DropDownMainPage DropDownNumber = new("1");
+            DropDownNumber.Select("Edit");
+            return new EditContactModal();
+        }
+
+        public void DeleteContact()
+        {
+            Browser.Instance.NavigateToUrl("https://d06000000zfpfeau-dev-ed.develop.lightning.force.com/lightning/o/Contact/list?filterName=Recent");
+            var contactTab = Browser.Instance.Driver.FindElement(By.XPath("//*[@data-id='Contact']//span"));
+            DropDownMainPage DropDownNumber = new("1");
+            DropDownNumber.Select("Delete");
+            new Button(By.XPath("//*[@title='Delete']")).GetElement().Click();
+
+        }
+        public EditAccountModal OpenExistingAccountModal()
+        {
+            Browser.Instance.NavigateToUrl("https://d06000000zfpfeau-dev-ed.develop.lightning.force.com/lightning/o/Account/list?filterName=Recent");
+            var contactTab = Browser.Instance.Driver.FindElement(By.XPath("//*[@data-id='Account']//span"));
+            DropDownMainPage DropDownNumber = new("1");
+            DropDownNumber.Select("Edit");
+            return new EditAccountModal();
+        }
+
+        public void DeleteAccount()
+        {
+            Browser.Instance.NavigateToUrl("https://d06000000zfpfeau-dev-ed.develop.lightning.force.com/lightning/o/Account/list?filterName=Recent");
+            var contactTab = Browser.Instance.Driver.FindElement(By.XPath("//*[@data-id='Account']//span"));
+            DropDownMainPage DropDownNumber = new("1");
+            DropDownNumber.Select("Delete");
+            new Button(By.XPath("//*[@title='Delete']")).GetElement().Click();
+
+        }
+
+
+
     }
 }

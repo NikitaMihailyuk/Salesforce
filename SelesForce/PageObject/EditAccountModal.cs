@@ -8,21 +8,18 @@ using System.Threading.Tasks;
 
 namespace SelesForce.PageObject
 {
-    public class NewContactModal
+    public class EditAccountModal
     {
-        Input accountName = new("Last Name");
-        PartialTextDropDown typeDropDown = new("Account Name");
-
+        Input accountName = new("Account Name");
+        Input accountNumber = new("Account Number");
+        DropDown typeDropDown = new("Type");
         Button saveButton = new(By.XPath("//*[@title='Save']//button"));
 
-        public void CreateContact(string name, string listOption)
+        public void EditAccount(string name, string listOption)
         {
-
             accountName.GetElement().SendKeys(name);
-            typeDropDown.Select("isthisnikita@gmail.com");
-            typeDropDown.Clear();
-            typeDropDown.SelectByPartText("Niki Niki");
-
+            typeDropDown.Select("Prospect");
+            accountNumber.GetElement().SendKeys(listOption);
             saveButton.GetElement().Click();
         }
     }

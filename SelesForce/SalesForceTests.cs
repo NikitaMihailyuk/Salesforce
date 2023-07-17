@@ -36,5 +36,46 @@ namespace SelesForce
                 .OpenNewContactModal()
                 .CreateContact(user.Name, "Customer");
         }
+
+
+        [Test]
+        public void EditContact()
+        {
+            var user = UserBuilder.GetSalesForceUser();
+
+            new LoginPage()
+                .OpenPage()
+                .Login(user).OpenExistingContactModal()
+                .EditContact(user.Name, "Customer");
+        }
+        [Test]
+        public void DeleteContact()
+        {
+            var user = UserBuilder.GetSalesForceUser();
+
+            new LoginPage()
+                .OpenPage()
+                .Login(user).DeleteContact();
+        }
+
+        [Test]
+        public void EditAccount()
+        {
+            var user = UserBuilder.GetSalesForceUser();
+
+            new LoginPage()
+                .OpenPage()
+                .Login(user).OpenExistingAccountModal()
+                .EditAccount(user.Name, "Customer");
+        }
+        [Test]
+        public void DeleteAccount()
+        {
+            var user = UserBuilder.GetSalesForceUser();
+
+            new LoginPage()
+                .OpenPage()
+                .Login(user).DeleteAccount();
+        }
     }
 }
