@@ -3,13 +3,46 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Allure.Commons;
+using NUnit.Allure.Attributes;
 using SelesForce.Core;
 using SelesForce.PageObject;
 
 namespace SelesForce
 {
-    public class SalesForceTests
+    public class SalesForceTests : BaseTest
     {
+
+        [Test(Description ="Failed coz random")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureTag("Smoke")]
+        [Description("Detailed Description")]
+        [AllureOwner("Nikita")]
+        [AllureSuite("Sales Force")]
+        [AllureSubSuite("Sales Force - failed")]
+        [AllureTms("TMS-16")]
+        [AllureIssue("JIRA-14")]
+        [AllureLink("https://google.com")]
+        public void ErrorLogin()
+        {
+            var user = UserBuilder.GetRandomUser();
+
+            new LoginPage()
+                .OpenPage()
+                .Login(user)
+                .OpenNewAccountModal();
+        }
+
+        [Test]
+        public void GoodLogin()
+        {
+            var user = UserBuilder.GetSalesForceUser();
+
+            new LoginPage()
+                .OpenPage()
+                .Login(user)
+                .OpenNewAccountModal();
+        }
 
 
 

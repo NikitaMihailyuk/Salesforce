@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NUnit.Allure.Attributes;
 
 namespace SelesForce.PageObject
 {
@@ -17,12 +18,13 @@ namespace SelesForce.PageObject
 
         private Button ContactTab = new(By.XPath("//*[@data-id='Contact']//span"));
 
+        [AllureStep]
         public LoginPage OpenPage()
         {
             Browser.Instance.NavigateToUrl("https://d06000000zfpfeau-dev-ed.develop.my.salesforce.com/");
             return this;
         }
-
+        [AllureStep]
         public LoginPage Login(UserModel user)
         {
             userNameInput.GetElement().SendKeys(user.Name);
@@ -68,6 +70,7 @@ namespace SelesForce.PageObject
             new Button(By.XPath("//*[@title='Delete']")).GetElement().Click();
 
         }
+        [AllureStep]
         public EditAccountModal OpenExistingAccountModal()
         {
             Browser.Instance.NavigateToUrl("https://d06000000zfpfeau-dev-ed.develop.lightning.force.com/lightning/o/Account/list?filterName=Recent");
@@ -76,7 +79,7 @@ namespace SelesForce.PageObject
             DropDownNumber.Select("Edit");
             return new EditAccountModal();
         }
-
+        [AllureStep]
         public void DeleteAccount()
         {
             Browser.Instance.NavigateToUrl("https://d06000000zfpfeau-dev-ed.develop.lightning.force.com/lightning/o/Account/list?filterName=Recent");
